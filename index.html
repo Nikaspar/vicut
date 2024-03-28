@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('img', path='favicon.svg') }}" type="image/svg+xml">
+    <title>Cut MP4</title>
+    <link rel="stylesheet" href="{{ url_for('css', path='style.css' ) }}">
+</head>
+<body>
+    <main>
+        <h1>Cut MP4</h1>
+        <button id="uploadBtn" type="button">UPLOAD</button>
+        <p>Click button or drop file here</p>
+    </main>
+    <div id="ProgressBlock" class="progress hidden">
+        <div id="Progress">
+            <div id="Bar"></div>
+          </div>
+    </div>
+    <div id="TimeBlock" class="time hidden">
+        <form>
+            <div class="x5-gap">
+                <div class="flex-row">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="filename" placeholder="file name">
+                </div>
+                <div class="flex-row">
+                    <label for="stime">From</label>
+                    <input type="text" id="stime" name="starttime" placeholder="00:00:00">
+                </div>
+                <div class="flex-row">
+                    <label for="etime">To</label>
+                    <input type="text" id="etime" name="endtime" placeholder="01:00:00">
+                </div>
+            </div>
+            <button type="submit">TRIM</button>
+        </form>
+    </div>
+    <div class="download hidden">
+        <button id="downloadBtn" type="button">DOWNLOAD</button>
+    </div>
+    <div id="error">
+        <h2>Server Error</h2>
+    </div>
+    <script src="{{ url_for('js', path='script.js' ) }}"></script>
+</body>
+</html>
