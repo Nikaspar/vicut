@@ -23,7 +23,7 @@
             <div class="x5-gap">
                 <div class="flex-row">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="filename" placeholder="file name">
+                    <input type="text" id="fname" name="filename" placeholder="file name">
                 </div>
                 <div class="flex-row">
                     <label for="stime">From</label>
@@ -34,7 +34,7 @@
                     <input type="text" id="etime" name="endtime" placeholder="01:00:00">
                 </div>
             </div>
-            <button type="submit">TRIM</button>
+            <button id="trimBtn" type="button">TRIM</button>
         </form>
     </div>
     <div class="download hidden">
@@ -42,6 +42,9 @@
     </div>
     <div id="error">
         <h2>Server Error</h2>
+    </div>
+    <div id="wait">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
     <script src="{{ url_for('js', path='script.js' ) }}"></script>
 </body>

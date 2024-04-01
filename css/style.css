@@ -4,6 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: sans-serif;
     color: #dfdfdf;
@@ -11,6 +12,7 @@ body {
     transform: translateY(-0%);
     transition: transform .3s ease;
 }
+
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     padding: 0;
@@ -27,9 +29,11 @@ main, div.progress, div.time, form, div.download {
     /* transform: translateY(0%); */
     /* transition: transform .3s ease; */
 }
+
 div.hidden {
     display: none;
 }
+
 #error {
     width: 100vw;
     height: 100vh;
@@ -42,10 +46,12 @@ div.hidden {
     color: rgb(255, 112, 112);
     cursor: default;
 }
+
 #Progress {
     width: 50%;
     background-color: #202020;
 }
+
 #Bar {
     width: 0%;
     height: 10px;
@@ -58,9 +64,10 @@ div.hidden {
     align-items: center;
     column-gap: 10px;
 }
+
 .x5-gap {
     display: flex;
-    row-gap: 50px;
+    column-gap: 30px;
 }
 
 input {
@@ -70,15 +77,19 @@ input {
     border-color: #202020;
     color: #dfdfdf;
     height: 30px;
+    font-size: 18px;
 }
+
 input:focus-visible {
     outline: aquamarine solid 2px;
     border-radius: 4px;
 }
+
 input#fname {
     text-align: center;
     font-size: 18px;
 }
+
 button {
     color: #424242;
     font-family: sans-serif;
@@ -93,8 +104,137 @@ button {
     cursor: pointer;
     transition: border-color .3s ease-in-out, background-color .3s ease-in-out, color .3s ease-in-out;
 }
+
 button:hover {
     background-color: #6fdfba;
     border-color: #6fdfba;
     color: #202020;
+}
+
+#wait {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    transform: translateY(-100%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000db;
+}
+.lds-roller {
+    /* change color here */
+    color: #6fdfba;
+}
+
+.lds-roller,
+.lds-roller div,
+.lds-roller div:after {
+    box-sizing: border-box;
+    
+}
+
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7.2px;
+    height: 7.2px;
+    border-radius: 50%;
+    background: currentColor;
+    margin: -3.6px 0 0 -3.6px;
+    box-shadow: 0px 0px 20px 2px #7fffd4;
+}
+
+.lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+    top: 62.62742px;
+    left: 62.62742px;
+}
+
+.lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+    top: 67.71281px;
+    left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+    top: 70.90963px;
+    left: 48.28221px;
+}
+
+.lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+    top: 70.90963px;
+    left: 31.71779px;
+}
+
+.lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+    top: 67.71281px;
+    left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+    top: 62.62742px;
+    left: 17.37258px;
+}
+
+.lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12.28719px;
+}
+
+@keyframes lds-roller {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

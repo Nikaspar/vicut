@@ -5,6 +5,7 @@ let timeBlock = document.getElementById('TimeBlock');
 let stime = document.getElementById('stime');
 let etime = document.getElementById('etime');
 let fname = document.getElementById('fname');
+let trimBtn = document.getElementById('trimBtn');
 
 
 let xhr = new XMLHttpRequest();
@@ -21,6 +22,13 @@ uploadBtn.addEventListener('click', () => {
 let filename = '';
 let filestart = '00:00:00';
 let fileend = '00:00:00';
+
+function updateVars(fn, fs, fe) {
+    filename = fn;
+    filestart = fs;
+    fileend = fe;
+}
+
 inputFile.addEventListener('change', async (e) => {
     let url = 'http://127.0.0.1:4554/upload';
     let urlStatus = 'http://127.0.0.1:4554/status'
@@ -32,17 +40,14 @@ inputFile.addEventListener('change', async (e) => {
         let xhru = xhr.upload;
         xhru.addEventListener('error', errorHandler, false);
         xhru.addEventListener('progress', progressHandler, false);
-        xhru.addEventListener('load', loadHandler, false);
+        xhr.addEventListener('loadend', loadEndHandler, false);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 let json = JSON.parse(xhr.response);
-                filename = json.filename;
-                filestart = json.filestart;
-                fileend = json.fileend;
+                updateVars(json.filename, json.filestart, json.fileend);
             }
         }
         xhr.send(formData);
-        filename = selectedFile.name
     } else {
         errorHandler();
     }
@@ -55,17 +60,14 @@ function progressHandler(event) {
     bar.style.width = percentLoaded+'%';
 };
 
-function loadHandler(event) {
+function loadEndHandler(event) {
     setTimeout(() => {
         timeBlock.classList.remove('hidden');
         body.style.transform = 'translateY(-200%)';
-    }, 1000)
-    fname.value = filename;
+    }, 1000);
+    fname.value = filename.split('.')[0] + '_trimmed.' + filename.split('.')[1];
     stime.value = filestart;
     etime.value = fileend;
-    console.log(filename);
-    console.log(filestart);
-    console.log(fileend);
 }
 
 // check server
@@ -92,3 +94,31 @@ function errorHandler() {
         errorModal.style.display = 'none';
     }, 1500);
 };
+
+trimBtn.addEventListener('click', async () => {
+    console.log('trim click');
+    let xhr = new XMLHttpRequest();
+    let url = 'http://127.0.0.1:4554/trim';
+    
+    let object = {'filename': filename, 'new_filename': fname.value,'filestart': stime.value, 'fileend': etime.value};
+    xhr.open('POST', url, true);
+    let xhru = xhr.upload;
+    xhr.addEventListener('error', errorHandler, false);
+    xhru.addEventListener('progress', progressTrimHandler, false);
+    xhr.addEventListener('loadend', loadEndTrimHandler, false);
+    xhr.send(JSON.stringify(object));
+});
+
+let waitModal = document.getElementById('wait');
+
+function progressTrimHandler(e) {
+    console.log('progress:');
+    console.log(e);
+    waitModal.style.display = 'flex';
+}
+
+function loadEndTrimHandler(e) {
+    console.log('loadend:');
+    console.log(e);
+    waitModal.style.display = 'none';
+}
