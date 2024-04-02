@@ -10,8 +10,8 @@
 <body>
     <main>
         <h1>Cut MP4</h1>
-        <button id="uploadBtn" type="button">UPLOAD</button>
-        <p>Click button or drop file here</p>
+        <button id="uploadBtn" type="button">ВЫБРАТЬ</button>
+        <p>Нажмите кнопку или перетащите файл сюда.</p>
     </main>
     <div id="ProgressBlock" class="progress hidden">
         <div id="Progress">
@@ -22,23 +22,23 @@
         <form>
             <div class="x5-gap">
                 <div class="flex-row">
-                    <label for="name">Name</label>
+                    <label for="name">Имя</label>
                     <input type="text" id="fname" name="filename" placeholder="file name">
                 </div>
                 <div class="flex-row">
-                    <label for="stime">From</label>
+                    <label for="stime">С</label>
                     <input type="text" id="stime" name="starttime" placeholder="00:00:00">
                 </div>
                 <div class="flex-row">
-                    <label for="etime">To</label>
+                    <label for="etime">Пo</label>
                     <input type="text" id="etime" name="endtime" placeholder="01:00:00">
                 </div>
             </div>
-            <button id="trimBtn" type="button">TRIM</button>
+            <button id="trimBtn" type="button">РЕЗАТЬ</button>
         </form>
     </div>
-    <div class="download hidden">
-        <button id="downloadBtn" type="button">DOWNLOAD</button>
+    <div id="downloadBlock" class="download hidden">
+        <button id="downloadBtn" type="button">СКАЧАТЬ</button>
     </div>
     <div id="error">
         <h2>Server Error</h2>

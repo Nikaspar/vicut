@@ -27,7 +27,11 @@ main, div.progress, div.time, form, div.download {
     width: 100%;
     row-gap: 30px;
     /* transform: translateY(0%); */
-    /* transition: transform .3s ease; */
+    transition: box-shadow .3s ease;
+    
+}
+main.dragover {
+    box-shadow: 0px 0px 50px 0px #7fffd4 inset;
 }
 
 div.hidden {
