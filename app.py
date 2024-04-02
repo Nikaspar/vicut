@@ -96,4 +96,4 @@ def read_status():
     return JSONResponse('Server is OK', status.HTTP_200_OK)
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=4554)
+    uvicorn.run(app, host='0.0.0.0', port=80)
