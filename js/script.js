@@ -40,8 +40,8 @@ main.addEventListener('drop', async (ev) => {
         return
     } else if (fileList.length === 1) {
         let xhr = new XMLHttpRequest();
-        let url = 'http://192.168.1.45:4554/upload';
-        let urlStatus = 'http://192.168.1.45:4554/status'
+        let url = 'http://192.168.1.99:4554/upload';
+        let urlStatus = 'http://192.168.1.99:4554/status'
         let selectedFile = ev.dataTransfer.files[0];
         let formData = new FormData();
         formData.append('file', selectedFile);
@@ -75,8 +75,8 @@ function updateVars(fn, fs, fe) {
 }
 
 inputFile.addEventListener('change', async (e) => {
-    let url = 'http://192.168.1.45:4554/upload';
-    let urlStatus = 'http://192.168.1.45:4554/status'
+    let url = 'http://192.168.1.99:4554/upload';
+    let urlStatus = 'http://192.168.1.99:4554/status'
     let selectedFile = e.target.files[0];
     let formData = new FormData();
     formData.append('file', selectedFile);
@@ -142,7 +142,7 @@ function errorHandler() {
 
 trimBtn.addEventListener('click', async () => {
     let xhr = new XMLHttpRequest();
-    let url = 'http://192.168.1.45:4554/trim';
+    let url = 'http://192.168.1.99:4554/trim';
     
     let object = {'filename': filename, 'new_filename': fname.value,'filestart': stime.value, 'fileend': etime.value};
     xhr.open('POST', url, true);
@@ -176,7 +176,7 @@ function loadEndTrimHandler(e) {
 downloadBtn.addEventListener('click', async (e) => {
     try {
         const filename = fname.value;
-        const url = `http://192.168.1.45:4554/download/${filename}`;
+        const url = `http://192.168.1.99:4554/download/${filename}`;
         const response = await fetch(url);
         if (response.ok) {
             const blob = await response.blob();
