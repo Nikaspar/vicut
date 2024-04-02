@@ -1,4 +1,5 @@
 aiofiles
 fastapi
+ffmpeg-python
 python-multipart
 uvicorn[standard]
